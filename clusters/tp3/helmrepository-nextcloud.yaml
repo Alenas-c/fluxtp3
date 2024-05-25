@@ -5,4 +5,5 @@ metadata:
   namespace: flux-system
 spec:
   url: https://nextcloud.github.io/helm/
+  interval: 1m0s
 
