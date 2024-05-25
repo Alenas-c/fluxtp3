@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hellogo
-  namespace: default
+  namespace: flux-system
 spec:
   replicas: 1
   selector:
@@ -14,7 +14,7 @@ spec:
         app: web
     spec:
       containers:
-      - name: api
-        image: 487086244836.dkr.ecr.us-east-1.amazonaws.com/hellogo:latest
-        ports:
-        - containerPort: 8080
+        - name: api
+          image: 487086244836.dkr.ecr.us-east-1.amazonaws.com/hellogo:latest
+          ports:
+            - containerPort: 8080
