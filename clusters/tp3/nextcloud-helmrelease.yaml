@@ -1,19 +1,24 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: nextcloud
-  namespace: nextcloud
+  namespace: flux-system
 spec:
-  interval: 1m0s
   chart:
     spec:
       chart: nextcloud
+      reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
         name: nextcloud
-        namespace: flux-system
-      version: 3.3.2
+  interval: 1m0s
   values:
+    externalDatabase:
+      enabled: false
+    internalDatabase:
+      enabled: true
+      name: nextcloud
     redis:
       enabled: true
       master:
@@ -22,9 +27,3 @@ spec:
       replica:
         persistence:
           enabled: false
-    externalDatabase:
-      enabled: false
-    internalDatabase:
-      enabled: true
-      name: nextcloud
-
