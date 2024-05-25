@@ -9,6 +9,6 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: fluxtp3
     namespace: flux-system
   targetNamespace: default
